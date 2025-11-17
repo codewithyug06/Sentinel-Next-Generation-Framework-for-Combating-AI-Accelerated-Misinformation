@@ -1,4 +1,4 @@
-#🛡️ Sentinel — Next-Generation Framework for Combating AI-Accelerated Misinformation #
+🛡️ Sentinel — Next-Generation Framework for Combating AI-Accelerated Misinformation 
 A Full-Stack, Real-Time Defense System Against Text & Image Manipulation
 📘 Overview
 
@@ -268,4 +268,5 @@ Blockchain-anchored image manifests
 Multi-language fallacy engine
 
 Real-time social media misinformation radar
+
 
