@@ -1,4 +1,4 @@
-🛡️ Sentinel — Next-Generation Framework for Combating AI-Accelerated Misinformation
+#🛡️ Sentinel — Next-Generation Framework for Combating AI-Accelerated Misinformation #
 A Full-Stack, Real-Time Defense System Against Text & Image Manipulation
 📘 Overview
 
@@ -23,6 +23,7 @@ It integrates:
 Sentinel is built for journalists, researchers, cybersecurity teams, policy analysts, and everyday users seeking protection against manipulative online content.
 
 ✨ Key Features
+
 🧠 1. Cognitive Shield (Text Misinformation Scanner)
 
 Real-time webpage text analysis using a blended NLP + rule-based pipeline:
@@ -267,3 +268,4 @@ Blockchain-anchored image manifests
 Multi-language fallacy engine
 
 Real-time social media misinformation radar
+
