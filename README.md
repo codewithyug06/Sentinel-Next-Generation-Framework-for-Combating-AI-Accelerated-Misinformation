@@ -1,94 +1,71 @@
-﻿# Sentinel-Next-Generation-Framework-for-Combating-AI-Accelerated-Misinformation
-
 🛡️ Sentinel — Next-Generation Framework for Combating AI-Accelerated Misinformation
+A Full-Stack, Real-Time Defense System Against Text & Image Manipulation
+📘 Overview
 
-A cutting-edge hybrid framework designed to detect, analyze, and counter AI-generated misinformation across text, images, and web content.
-Sentinel combines:
+As generative AI accelerates the creation of deepfakes, synthetic media, and persuasive misinformation, modern defense systems must evolve beyond traditional NLP.
 
-Cognitive Linguistic Analysis
+Sentinel is a next-generation, hybrid misinformation-detection framework designed to operate in real-time within the browser and across the web.
 
-Misinformation Pattern Detection
+It integrates:
 
-Image Provenance Verification (Genesis Engine)
+🧠 Cognitive Linguistic Analysis
 
-Source Diversity Mapping (Echo Chamber Radar)
+📉 Misinformation Pattern Detection
 
-Chrome Extension Real-Time Shield
+🖼️ Image Provenance Verification (Genesis Engine)
 
-FastAPI-powered backend with ML/NLP models
+📡 Source Diversity Mapping (Echo Chamber Radar)
 
-This project delivers a full-stack, real-time misinformation defense system that works directly within the browser and across the web.
+🧩 Chrome Extension Real-Time Shield
 
-📌 Overview
+⚙️ FastAPI-powered backend with ML/NLP models
 
-As generative AI accelerates the spread of manipulated content, misinformation detection must evolve beyond classical NLP.
-Sentinel is built to address this next-generation threat landscape.
-
-The system provides:
-
-🔍 Real-time misinformation detection inside webpages
-
-📉 Logical fallacy recognition
-
-⚠️ Emotional manipulation detection
-
-🖼️ AI vs. real image verification (Genesis Check)
-
-📡 Source diversity analysis to prevent echo chamber formation
-
-🔐 Privacy-preserving local inference (browser-side + local API)
-
-🚨 Adaptive risk classification (green/yellow/red reasoning engine)
-
-🧠 Bias-awareness mapping via curated bias lexicon
-
-Sentinel is designed for journalists, researchers, policy analysts, cybersecurity teams, and everyday users.
+Sentinel is built for journalists, researchers, cybersecurity teams, policy analysts, and everyday users seeking protection against manipulative online content.
 
 ✨ Key Features
 🧠 1. Cognitive Shield (Text Misinformation Scanner)
 
-Real-time analysis of webpage content using a blended NLP pipeline:
+Real-time webpage text analysis using a blended NLP + rule-based pipeline:
 
-Emotional manipulation scoring
+Emotional language detection
 
-Logical fallacy detection
+Logical fallacy recognition
 
 Sentiment & polarity shifts
 
-Risk scoring (green / yellow / red)
+Pattern-matching fallacy engine
 
-Lightweight lexicon + pattern-based fallacy engine
+Green / Yellow / Red risk scoring
 
 Optional HuggingFace sentiment integration
 
-Resulting alerts include:
+Example Alerts:
 
-“Emotional Language Detected”
+Emotional Language Detected
 
-“Potential False Dilemma”
+Potential False Dilemma
 
-“Possible Straw Man Argument”
+Possible Straw Man Argument
 
-“Ad Hominem Indicators”
+Ad Hominem Attack Indicators
 
-✔ Works fully automatically without user interaction.
+✔ Fully automatic — no user interaction required.
 
 🖼️ 2. Genesis Engine (Image Authenticity Verification)
 
-Triggered via right-click → “Verify Image (Genesis)”.
-The backend performs:
+Triggered via: Right-Click → “Sentinel: Verify Image (Genesis)”
+
+Backend performs:
 
 Perceptual Hashing (pHash)
 
 SHA-256 integrity hashing
 
-Optional DB anchoring for repeated images
+Optional manifest anchoring (SQLite)
 
-Signature & content checks
+Signature/suspicion evaluation
 
-Metadata extraction (future expansion: EXIF/CLIP comparison)
-
-Users get immediate classification:
+Classifies images as:
 
 Authentic / Likely Original
 
@@ -96,159 +73,148 @@ Potentially Manipulated
 
 Suspicious / AI-Generated
 
-🌐 3. Echo Chamber Radar (Source Diversity Chart)
+🌐 3. Echo Chamber Radar (Source Diversity Mapping)
 
-Tracks the websites a user visits and identifies:
+Monitors user browsing to visualize:
 
 Left / right / center political bias
 
-News ecosystem diversity
+Overall news diversity
 
-Echo-chamber patterns
+Polarization patterns
 
-Polarization tendencies
+Potential echo-chamber loops
 
-Visually displayed using D3.js charts in the popup.
+Rendered using local D3.js inside Chrome popup.
 
-Uses the curated bias dataset:
-
-
-bias
+Uses curated bias dataset (bias.json).
 
 🧩 4. Chrome Extension (Frontend Layer)
-Components
 
-content.js → Extracts live webpage text & streams it to backend. 
+Components:
 
-content
+File	Purpose
+content.js	Extracts webpage text & streams to backend
+background.js	Handles analysis, caching, Genesis engine, notifications
+popup.html	Displays results UI
+popup.js	Renders alerts, badges, diversity charts
+d3.min.js	Local D3 library for visualization
 
-background.js → Orchestrates analysis, caching, Genesis engine, and notifications. 
+Capabilities:
 
-background
+Dynamic DOM monitoring
 
-popup.html → Presents results clearly. 
+5-minute smart caching via hash keys
 
-popup
+Clean MV3 architecture (service worker-based)
 
-popup.js → Builds UI dynamically and renders alerts. 
-
-popup
-
-Capabilities
-
-Real-time DOM monitoring for dynamic sites
-
-Smart caching (hash-based, 5-minute window)
-
-Clean MV3 architecture with isolated service worker
-
-Notifications with safe fallback handling
+Safe notifications with fallback logic
 
 ⚙️ 5. FastAPI Backend (Analysis Engine)
 
-Defined in:
-📄 main.py
-
-
-main
-
-Runs locally for privacy and handles:
+Defined in main.py, the backend handles:
 
 Text verification
 
 Image verification
 
-Hashing + database management (SQLite)
+SHA/pHash generation
 
-HuggingFace sentiment (optional)
+SQLite-based manifest storage
 
-Core text analysis modules:
+Optional HuggingFace API sentiment modeling
 
-emotion lexicon detector
+Core Text Analysis Modules:
 
-logical fallacy pattern matching
+Emotion lexicon detector
 
-risk categorization engine
+Logical fallacy pattern matching
 
+Risk classification engine
 
-🧠 How Sentinel Works (Pipeline)
-1. Real-time Text Collection
+🧠 How Sentinel Works (End-to-End Pipeline)
+1. Real-Time Text Collection
 
-content.js continuously extracts visible text from the webpage.
+content.js extracts visible text dynamically.
 
-2. Backchannel Processing
+2. Backchannel Processing (background.js)
 
-Text is sent to background.js, which:
+Hash content
 
-Hashes & caches content
+Cache results
 
-Sends to FastAPI verify endpoint
+Send to /verify API endpoint
 
-Saves structured results to chrome.storage.local
+Store output in chrome.storage.local
 
-3. ML/NLP + Rule Engine
+3. ML/NLP + Rule-Based Detection (FastAPI)
 
 main.py performs:
 
-Emotional lexicon detection
+Emotion word scanning
 
-Fallacy pattern scanning
+Logical fallacy pattern detection
 
-Optional sentiment modeling via HuggingFace
+Optional sentiment inference
 
-4. Visual Feedback
+4. Visual Feedback in the Popup
 
-popup.js displays results:
+popup.js renders:
 
-Status badge
+Risk status badge
 
-Alert cards
+Individual alert cards
 
 Explanation tooltips
 
-Echo chamber chart
+D3-powered diversity chart
 
-5. Image Verification (Genesis)
+5. Genesis Image Verification
 
-Triggered by context menu → sends image URL → back-end checks:
+Upon request:
 
-pHash distance
+Fetch image
 
-Hash comparison
+Compute SHA-256
 
-Suspicious indicators
+Compute perceptual hash
 
-📊 Risk Classification
+Compare against local manifest
 
-Sentinel assigns a traffic-light style risk score:
+Flag suspicious indicators
 
+📊 Risk Classification System
 Status	Meaning
-🟢 Green	No manipulative or fallacious indicators detected
-🟡 Yellow	Emotional or sensational language present
-🔴 Red	Strong fallacy indicators / likely manipulation
+🟢 Green	No manipulative indicators detected
+🟡 Yellow	Emotional/sensational language present
+🔴 Red	Strong fallacy patterns / probable manipulation
 📦 Installation
 Chrome Extension
 
-Go to chrome://extensions
+Visit: chrome://extensions/
 
 Enable Developer Mode
 
-Click Load unpacked
+Click Load Unpacked
 
-Select the project folder
+Select project folder
 
 Backend
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 
 🧪 Example API Request
-Text Verification
-POST /verify
+Text Verification — POST /verify
+
+Request
+
 {
   "text": "This shocking news proves everything is corrupt!"
 }
 
+
 Response
+
 {
   "status": "red",
   "categories": ["Emotional Language", "Ad Hominem"],
@@ -258,31 +224,33 @@ Response
 🔬 Technical Deep Dive
 NLP Modules
 
-Regex-based fallacy detection
+Regex fallacy detectors
 
 Emotion lexicon scanning
 
-Sentiment inference (optional)
+Hybrid sentimental scoring
+
+Heuristic-based risk evaluation
 
 Image Verification
 
-Perceptual hashing
+Perceptual Hashing (pHash)
 
-SHA-256 fingerprint
+SHA-256 fingerprinting
 
-SQLite manifest ledger
+SQLite-based provenance ledger
 
-Architecture Paradigm
+System Architecture
 
 Chrome Manifest V3
 
 MV3 Service Worker
 
-FastAPI for analysis endpoints
+FastAPI analysis server
 
-Local-first privacy model
+Local-first privacy design
 
-Event-driven communication
+Event-driven communication chain
 
 🔮 Future Enhancements
 
@@ -290,12 +258,12 @@ CLIP-based image forgery detection
 
 LLM-powered misinformation classifier
 
-Network-level disinformation pattern recognition
+Automated disinformation network mapping
 
-Crowdsourced misinformation fingerprinting
+Crowdsourced misinformation fingerprint registry
 
-Blockchain-anchored manifests
+Blockchain-anchored image manifests
 
 Multi-language fallacy engine
 
-Real-time misinformation radar for social media
+Real-time social media misinformation radar
